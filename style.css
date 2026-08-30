@@ -1,0 +1,2723 @@
+/* =========================================================
+   WEDDING INVITATION
+   ========================================================= */
+
+/* =========================================================
+   VARIABLES
+   ========================================================= */
+
+:root {
+
+  /* FIRST PAGE */
+
+  --maroon-1: #270616;
+  --maroon-2: #3b0920;
+  --maroon-3: #510d2b;
+  --maroon-4: #651331;
+
+  --gold: #d8b36c;
+  --gold-light: #f1d89f;
+  --gold-dark: #9c7137;
+
+
+  /* SECOND PAGE */
+
+  --ivory: #f6efe3;
+  --ivory-light: #fcf8f0;
+  --paper: #f9f1e5;
+
+  --wine: #581b2f;
+  --wine-light: #7b3c4e;
+
+  --brown: #51372d;
+  --muted: #92786c;
+
+
+  --serif:
+    "Cormorant Garamond",
+    Georgia,
+    serif;
+
+  --script:
+    "Great Vibes",
+    cursive;
+
+  --sans:
+    "DM Sans",
+    Arial,
+    sans-serif;
+
+}
+
+
+/* =========================================================
+   RESET
+   ========================================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+
+html {
+  scroll-behavior: smooth;
+}
+
+
+body {
+
+  margin: 0;
+
+  overflow-x: hidden;
+
+  background:
+    var(--ivory);
+
+  color:
+    var(--brown);
+
+  font-family:
+    var(--sans);
+
+}
+
+
+body.intro-active {
+  overflow: hidden;
+}
+
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+
+button {
+  font-family: inherit;
+}
+
+
+/* =========================================================
+   TEXTURE
+   ========================================================= */
+
+/*
+ * Subtle paper texture generated entirely with CSS.
+ *
+ * No external texture image required.
+ */
+
+.cover-background::after,
+.invitation::after {
+
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  pointer-events: none;
+
+  opacity: .16;
+
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='.42'/%3E%3C/svg%3E");
+
+}
+
+
+/* =========================================================
+   COVER SCREEN
+   ========================================================= */
+
+.cover-screen {
+
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 9999;
+
+  overflow: hidden;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  background:
+    var(--maroon-2);
+
+}
+
+
+.cover-background {
+
+  position: absolute;
+
+  inset: 0;
+
+  background:
+
+    radial-gradient(
+      circle at 50% 35%,
+      rgba(122, 29, 65, .75),
+      transparent 38%
+    ),
+
+    radial-gradient(
+      circle at 12% 80%,
+      rgba(129, 37, 69, .28),
+      transparent 30%
+    ),
+
+    linear-gradient(
+      135deg,
+      #3a081d,
+      #5a0d2c 45%,
+      #2d0618
+    );
+
+}
+
+
+/* =========================================================
+   PETALS
+   ========================================================= */
+
+.petal {
+
+  position: absolute;
+
+  width: 10px;
+
+  height: 16px;
+
+  background:
+    linear-gradient(
+      130deg,
+      #bd6276,
+      #6a1b38
+    );
+
+  border-radius:
+    100% 0 100% 0;
+
+  opacity: .65;
+
+  animation:
+    petalFall linear infinite;
+
+}
+
+
+@keyframes petalFall {
+
+  from {
+
+    transform:
+      translate3d(0, -10vh, 0)
+      rotate(0);
+
+  }
+
+  to {
+
+    transform:
+      translate3d(var(--drift), 110vh, 0)
+      rotate(460deg);
+
+  }
+
+}
+
+
+/* =========================================================
+   BI-FOLD STAGE
+   ========================================================= */
+
+.bifold-stage {
+
+  position: relative;
+
+  width: min(88vw, 640px);
+
+  height: min(88svh, 820px);
+
+  perspective: 2400px;
+
+  transform-style: preserve-3d;
+
+}
+
+
+/* =========================================================
+   INNER CARD
+   ========================================================= */
+
+.inside-card {
+
+  position: absolute;
+
+  inset: 0;
+
+  z-index: 1;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  background:
+
+    radial-gradient(
+      circle at 50% 30%,
+      rgba(255,255,255,.7),
+      transparent 40%
+    ),
+
+    var(--ivory);
+
+  box-shadow:
+    0 30px 90px rgba(0,0,0,.35);
+
+}
+
+
+.inside-card-border {
+
+  position: absolute;
+
+  inset: 22px;
+
+  border: 1px solid var(--gold);
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  text-align: center;
+
+}
+
+
+.inside-gold-symbol {
+
+  margin-bottom: 25px;
+
+  color: var(--gold);
+
+  font-size: 35px;
+
+}
+
+
+.inside-small {
+
+  margin: 0;
+
+  color: var(--wine);
+
+  font-size: 8px;
+
+  letter-spacing: 3px;
+
+  text-transform: uppercase;
+
+}
+
+
+.inside-card h2 {
+
+  margin: 22px 0;
+
+  font-family: var(--script);
+
+  font-size: clamp(70px, 15vw, 110px);
+
+  font-weight: 400;
+
+  line-height: .75;
+
+  color: var(--wine);
+
+}
+
+
+.inside-card h2 span {
+
+  display: block;
+
+  margin: 15px 0;
+
+  font-family: var(--serif);
+
+  font-size: .35em;
+
+  color: var(--gold);
+
+}
+
+
+.inside-divider {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  color: var(--gold);
+
+  margin-bottom: 20px;
+
+}
+
+
+.inside-divider span {
+
+  width: 35px;
+
+  height: 1px;
+
+  background:
+    var(--gold);
+
+}
+
+
+.inside-date {
+
+  margin-top: 25px;
+
+  font-size: 10px;
+
+  letter-spacing: 4px;
+
+  color: var(--gold-dark);
+
+}
+
+
+/* =========================================================
+   BI-FOLD PANELS
+   ========================================================= */
+
+/* =========================================================
+   BI-FOLD PANELS
+   ========================================================= */
+
+.fold {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 50%;
+  z-index: 5;
+
+  /* Your existing background setup */
+  background-image: url("./bg.png"); 
+  background-size: cover;
+  background-position: center;
+
+  /* ─── ADD YOUR CUSTOM BORDER HERE ─── */
+  /* 1. Reserve 24px space for your border frame */
+  border: 24px solid transparent; 
+
+  /* 2. Treat the border framework within the layout nicely */
+  box-sizing: border-box; 
+
+  /* 3. Slice the background graphic to form the frame loops */
+  /* 'round' keeps tiles whole; '30' sets slice values based on asset scale */
+  border-image: url("./border.png") 130 round;
+
+  transform-style: preserve-3d;
+  transition: transform 1.75s cubic-bezier(.76,0,.18,1);
+}
+
+
+
+/* LEFT */
+
+.fold-left {
+
+  left: 0;
+  width: 100%;
+
+  transform-origin:
+    right center;
+
+}
+
+
+/* RIGHT */
+
+.fold-right {
+
+  right: 0;
+  width: 100%;
+  z-index: 2;
+
+  transform-origin:
+    left center;
+
+}
+
+
+/* =========================================================
+   FOLD TEXTURE
+   ========================================================= */
+
+.fold::after {
+
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  pointer-events: none;
+
+  opacity: .28;
+
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='170' height='170'%3E%3Cfilter id='paper'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23paper)' opacity='.5'/%3E%3C/svg%3E");
+
+}
+
+
+/* =========================================================
+   SVG BORDER
+   ========================================================= */
+
+/* .gold-border {
+
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+
+  height: 100%;
+
+  padding: 13px;
+
+  opacity: .9;
+
+} */
+
+
+/* =========================================================
+   COVER FACE
+   ========================================================= */
+
+.cover-face {
+  position: absolute;
+  /* Adjusting inset ensures text padding respects the border depth */
+  inset: 10px; 
+  pointer-events: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--gold-light);
+
+  border: 24px solid transparent; 
+
+  /* 2. Treat the border framework within the layout nicely */
+  box-sizing: border-box; 
+
+  /* 3. Slice the background graphic to form the frame loops */
+  /* 'round' keeps tiles whole; '30' sets slice values based on asset scale */
+  border-image: url("./border.png") 130 round;
+}
+
+
+
+/* =========================================================
+   COVER OUTER BORDER
+   ========================================================= */
+
+.outer-border {
+
+  position: absolute;
+
+  inset: 14px;
+
+  z-index: 6;
+
+  border: 2px solid
+    rgba(216,179,108,.7);
+
+  pointer-events: none;
+
+}
+
+
+.outer-border::before,
+.outer-border::after {
+
+  content: "";
+
+  position: absolute;
+
+  width: 38px;
+  height: 38px;
+
+  border: 1px solid var(--wine) transparent;
+
+}
+
+
+.outer-border::before {
+
+  top: 12px;
+  left: 12px;
+
+  border-right: 0;
+  border-bottom: 0;
+
+}
+
+
+.outer-border::after {
+
+  bottom: 12px;
+  right: 12px;
+
+  border-left: 0;
+  border-top: 0;
+
+}
+
+
+/* =========================================================
+   GANESHA
+   ========================================================= */
+
+.ganesha {
+
+  width: 47%;
+
+  max-width: 330px;
+
+  object-fit: contain;
+
+  margin-bottom: 25px;
+
+  filter:
+    drop-shadow(
+      0 12px 14px rgba(0,0,0,.22)
+    );
+
+  animation:
+    ganeshaFloat 5s ease-in-out infinite;
+
+}
+
+
+@keyframes ganeshaFloat {
+
+  0%,
+  100% {
+
+    transform:
+      translateY(0);
+
+  }
+
+  50% {
+
+    transform:
+      translateY(-6px);
+
+  }
+
+}
+
+
+/* =========================================================
+   MANTRA
+   ========================================================= */
+
+.mantra {
+
+  font-family: var(--script);
+
+  font-size: clamp(38px, 8vw, 62px);
+
+  line-height: .9;
+
+  color: var(--wine);
+
+  z-index: 6;
+
+  text-shadow:
+    0 2px 5px rgba(0,0,0,.25);
+
+}
+
+
+.mantra div + div {
+
+  margin-top: 6px;
+
+  z-index: 6;
+
+}
+
+
+/* =========================================================
+   COVER DIVIDER
+   ========================================================= */
+
+.cover-divider {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  margin: 25px 0;
+
+  color: var(--wine);
+
+}
+
+
+.cover-divider span {
+
+  display: block;
+
+  width: 30px;
+
+  height: 1px;
+
+  background:
+    var(--wine);
+
+}
+
+
+.cover-divider b {
+
+  font-size: 11px;
+
+  font-weight: 400;
+
+}
+
+
+/* =========================================================
+   COUPLE ON COVER
+   ========================================================= */
+
+.cover-couple {
+
+  font-family: var(--script);
+
+  font-size: clamp(42px, 10vw, 65px);
+
+  line-height: .8;
+
+  color: var(--wine);
+
+  z-index: 4;
+
+}
+
+
+.cover-couple span {
+
+  display: block;
+
+  margin: 15px 0;
+
+  font-family: var(--serif);
+
+  font-size: .35em;
+
+}
+
+
+/* =========================================================
+   COVER DATE
+   ========================================================= */
+
+.cover-date {
+
+  margin-top: 28px;
+
+  z-index: 6;
+
+  font-family: var(--serif);
+
+  font-size: 15px;
+
+  letter-spacing: 5px;
+
+  color: var(--wine);
+
+  position: absolute;
+
+  bottom: 15%;
+
+}
+
+
+/* =========================================================
+   OPEN BUTTON
+   ========================================================= */
+
+.cover-button {
+
+  position: absolute;
+
+  bottom: 15%;
+
+  z-index: 6;
+
+  padding: 15px 26px;
+
+  border: 1px solid
+    rgba(216,179,108,.55);
+
+  border-radius: 50px;
+
+  background:
+    rgba(0,0,0,.06);
+
+  color: var(--gold-light);
+
+  font-size: 9px;
+
+  letter-spacing: 3px;
+
+  text-transform: uppercase;
+
+  cursor: pointer;
+
+  transition:
+    background .3s ease,
+    transform .3s ease;
+
+}
+
+
+.cover-button:hover {
+
+  background:
+    rgba(216,179,108,.1);
+
+  transform:
+    translateY(-2px);
+
+}
+
+
+.button-ring {
+
+  position: absolute;
+
+  inset: -5px;
+
+  border:
+    1px solid
+    rgba(216,179,108,.22);
+
+  border-radius: inherit;
+
+  animation:
+    buttonPulse 2s ease-in-out infinite;
+
+}
+
+
+@keyframes buttonPulse {
+
+  0%,
+  100% {
+
+    transform:
+      scale(1);
+
+    opacity: .35;
+
+  }
+
+  50% {
+
+    transform:
+      scale(1.08);
+
+    opacity: .9;
+
+  }
+
+}
+
+
+/* =========================================================
+   BI-FOLD SEAM
+   ========================================================= */
+
+.bifold-seam {
+
+  position: absolute;
+
+  z-index: 20;
+
+  top: 0;
+  bottom: 0;
+  left: 50%;
+
+  width: 1px;
+
+  background:
+    linear-gradient(
+      transparent,
+      rgba(237,201,137,.7) 20%,
+      rgba(237,201,137,.7) 80%,
+      transparent
+    );
+
+  box-shadow:
+    0 0 10px rgba(0,0,0,.3);
+
+}
+
+
+/* =========================================================
+   OPENING STATE
+   ========================================================= */
+
+.cover-screen.is-opening {
+
+  pointer-events: none;
+
+}
+
+
+.cover-screen.is-opening .fold-left {
+
+  animation: openAndRotateZ 3.5s ease-in-out forwards;
+  transform-origin: left center; 
+
+}
+
+ /* .cover-screen.is-opening .fold-right {
+
+  transform:
+    rotateY(115deg);
+
+} */
+
+
+.cover-screen.is-opening .bifold-stage {
+
+  animation:
+    cameraForward 4.7s
+    cubic-bezier(.65,0,.15,1)
+    forwards;
+}
+
+
+.cover-screen.is-opening .cover-face {
+
+  animation:
+    coverFaceDisappear 4.3s
+    ease
+    forwards;
+}
+
+
+.cover-screen.is-opening .inside-card {
+
+  animation:
+    insideCardZoom 4.7s
+    cubic-bezier(.65,0,.15,1)
+    forwards;
+}
+
+@keyframes openAndRotateZ {
+  /* PART 1: The starting anchor frame */
+  from {
+    transform: rotateY(0deg);
+    opacity: 1;
+    visibility: visible;
+  }
+
+  
+  /* PART 4: Final heavy deceleration and total disappearance */
+  to {
+    transform: rotateY(-135deg);
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+
+@keyframes cameraForward {
+
+  0% {
+
+    transform:
+      scale(1);
+
+  }
+
+  45% {
+
+    transform:
+      scale(1.03);
+
+  }
+
+  72% {
+
+    transform:
+      scale(1.25);
+
+  }
+
+  100% {
+
+    transform:
+      scale(5.2);
+
+  }
+
+}
+
+
+@keyframes coverFaceDisappear {
+
+  0% {
+
+    opacity: 1;
+
+  }
+
+  58% {
+
+    opacity: 1;
+
+  }
+
+  75% {
+
+    opacity: .15;
+
+  }
+
+  100% {
+
+    opacity: 0;
+
+  }
+
+}
+
+
+@keyframes insideCardZoom {
+
+  0% {
+
+    transform:
+      scale(1);
+
+  }
+
+  55% {
+
+    transform:
+      scale(1.05);
+
+  }
+
+  100% {
+
+    transform:
+      scale(5);
+
+  }
+
+}
+
+
+/* =========================================================
+   COVER BOTTOM HINT
+   ========================================================= */
+
+.cover-bottom-hint {
+
+  position: absolute;
+
+  z-index: 30;
+
+  bottom: 18px;
+
+  left: 0;
+  right: 0;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  gap: 7px;
+
+  color:
+    rgba(241,216,159,.72);
+
+  font-size: 8px;
+
+  letter-spacing: 2px;
+
+  text-transform: uppercase;
+
+}
+
+
+.cover-bottom-hint i {
+
+  width: 1px;
+
+  height: 25px;
+
+  background:
+    var(--gold);
+
+  animation:
+    hintMove 1.8s ease-in-out infinite;
+
+}
+
+
+@keyframes hintMove {
+
+  0%,
+  100% {
+
+    transform:
+      scaleY(.5);
+
+    transform-origin:
+      top;
+
+  }
+
+  50% {
+
+    transform:
+      scaleY(1);
+
+  }
+
+}
+
+
+/* =========================================================
+   INVITATION
+   ========================================================= */
+
+.invitation {
+
+  position: relative;
+
+  min-height: 100vh;
+
+  background:
+    var(--ivory);
+
+  overflow: hidden;
+
+}
+
+
+.invitation::after {
+
+  z-index: 100;
+
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.site-header {
+
+  position: sticky;
+
+  top: 0;
+
+  z-index: 100;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  height: 72px;
+
+  padding: 0 5vw;
+
+  background:
+    rgba(246,239,227,.88);
+
+  border-bottom:
+    1px solid
+    rgba(88,27,47,.1);
+
+  backdrop-filter:
+    blur(12px);
+
+}
+
+
+.logo {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  font-family: var(--serif);
+
+  font-size: 26px;
+
+  color: var(--wine);
+
+}
+
+
+.logo i {
+
+  width: 1px;
+
+  height: 22px;
+
+  background:
+    var(--gold);
+
+}
+
+
+.site-header nav {
+
+  display: flex;
+
+  gap: 25px;
+
+}
+
+
+.site-header nav a {
+
+  font-size: 9px;
+
+  letter-spacing: 1.8px;
+
+  color: var(--brown);
+
+  text-transform:
+    uppercase;
+
+}
+
+
+.music-button {
+
+  width: 40px;
+  height: 40px;
+
+  border-radius: 50%;
+
+  border:
+    1px solid
+    rgba(88,27,47,.2);
+
+  background:
+    var(--wine);
+
+  color:
+    white;
+
+  cursor:
+    pointer;
+
+}
+
+
+.music-wave {
+
+  display: none;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 2px;
+
+}
+
+
+.music-wave i {
+
+  display: block;
+
+  width: 2px;
+
+  background: white;
+
+  animation:
+    audioWave .7s
+    ease-in-out infinite alternate;
+
+}
+
+
+.music-wave i:nth-child(1) {
+  height: 7px;
+}
+
+.music-wave i:nth-child(2) {
+  height: 13px;
+  animation-delay: -.3s;
+}
+
+.music-wave i:nth-child(3) {
+  height: 9px;
+  animation-delay: -.5s;
+}
+
+.music-wave i:nth-child(4) {
+  height: 15px;
+  animation-delay: -.2s;
+}
+
+
+.music-button.playing .music-note {
+
+  display: none;
+
+}
+
+
+.music-button.playing .music-wave {
+
+  display: flex;
+
+}
+
+
+@keyframes audioWave {
+
+  from {
+    transform: scaleY(.45);
+  }
+
+  to {
+    transform: scaleY(1);
+  }
+
+}
+
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.hero-section {
+
+  min-height:
+    calc(100svh - 72px);
+
+  padding:
+    70px 7vw;
+
+  display:
+    grid;
+
+  grid-template-columns:
+    1fr 1fr;
+
+  align-items:
+    center;
+
+  gap: 6vw;
+
+  position: relative;
+
+}
+
+
+.hero-copy {
+
+  position: relative;
+
+  z-index: 2;
+
+}
+
+
+.eyebrow {
+
+  margin: 0 0 18px;
+
+  font-size: 9px;
+
+  letter-spacing: 3.5px;
+
+  color:
+    var(--gold-dark);
+
+  font-weight: 600;
+
+}
+
+
+.hero-names {
+
+  margin: 0 0 24px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  font-family: var(--script);
+
+  font-size:
+    clamp(90px, 12vw, 145px);
+
+  line-height: .68;
+
+  font-weight: 400;
+
+  color:
+    var(--wine);
+
+}
+
+
+.hero-names small {
+
+  margin:
+    18px 0;
+
+  font-family:
+    var(--serif);
+
+  font-size:
+    .25em;
+
+  color:
+    var(--gold-dark);
+
+}
+
+
+.hero-subtitle {
+
+  font-family:
+    var(--serif);
+
+  font-size:
+    22px;
+
+  line-height:
+    1.4;
+
+  color:
+    var(--muted);
+
+}
+
+
+.countdown {
+
+  display:
+    grid;
+
+  grid-template-columns:
+    repeat(4, minmax(60px, 1fr));
+
+  max-width:
+    480px;
+
+  margin:
+    32px 0 25px;
+
+  padding:
+    15px 0;
+
+  border:
+    1px solid
+    rgba(168,137,93,.35);
+
+  border-radius:
+    10px;
+
+  background:
+    rgba(255,255,255,.28);
+
+}
+
+
+.countdown > div {
+
+  display:
+    flex;
+
+  flex-direction:
+    column;
+
+  align-items:
+    center;
+
+  border-right:
+    1px solid
+    rgba(168,137,93,.2);
+
+}
+
+
+.countdown > div:last-child {
+
+  border-right:
+    0;
+
+}
+
+
+.countdown strong {
+
+  font-family:
+    var(--serif);
+
+  font-size:
+    42px;
+
+  line-height:
+    .9;
+
+  font-weight:
+    500;
+
+  color:
+    var(--wine);
+
+}
+
+
+.countdown span {
+
+  margin-top:
+    6px;
+
+  font-size:
+    7px;
+
+  letter-spacing:
+    1.8px;
+
+  color:
+    var(--muted);
+
+}
+
+
+.primary-button {
+
+  display:
+    inline-flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  gap:
+    9px;
+
+  min-height:
+    46px;
+
+  padding:
+    12px 25px;
+
+  border:
+    0;
+
+  border-radius:
+    30px;
+
+  background:
+    var(--wine);
+
+  color:
+    white;
+
+  font-size:
+    9px;
+
+  letter-spacing:
+    1.8px;
+
+  text-transform:
+    uppercase;
+
+  cursor:
+    pointer;
+
+  transition:
+    transform .25s ease;
+
+}
+
+
+.primary-button:hover {
+
+  transform:
+    translateY(-2px);
+
+}
+
+
+/* =========================================================
+   HERO PHOTO
+   ========================================================= */
+
+.hero-photo {
+
+  display:
+    flex;
+
+  justify-content:
+    center;
+
+  align-items:
+    center;
+
+}
+
+
+.photo-frame {
+
+  position:
+    relative;
+
+  width:
+    min(100%, 420px);
+
+  padding:
+    9px;
+
+  border:
+    1px solid
+    var(--gold);
+
+  background:
+    var(--ivory-light);
+
+}
+
+
+.photo-frame::before {
+
+  content:
+    "";
+
+  position:
+    absolute;
+
+  inset:
+    7px;
+
+  border:
+    1px solid
+    rgba(168,137,93,.55);
+
+  pointer-events:
+    none;
+
+}
+
+
+.photo-frame img {
+
+  width:
+    100%;
+
+  aspect-ratio:
+    3 / 4;
+
+  object-fit:
+    cover;
+
+}
+
+
+/* =========================================================
+   ORNAMENT DIVIDER
+   ========================================================= */
+
+.ornamental-divider {
+
+  max-width:
+    900px;
+
+  margin:
+    auto;
+
+  padding:
+    0 25px;
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  gap:
+    15px;
+
+}
+
+
+.ornamental-divider span {
+
+  flex:
+    1;
+
+  height:
+    1px;
+
+  background:
+    rgba(168,137,93,.45);
+
+}
+
+
+.ornamental-divider b {
+
+  color:
+    var(--gold);
+
+  font-weight:
+    400;
+
+  font-size:
+    11px;
+
+}
+
+
+/* =========================================================
+   STORY
+   ========================================================= */
+
+.story-section {
+
+  min-height:
+    90svh;
+
+  padding:
+    120px 25px;
+
+  display:
+    flex;
+
+  flex-direction:
+    column;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  text-align:
+    center;
+
+}
+
+
+.story-section h2,
+.section-heading h2,
+.venue-content h2,
+.rsvp-section h2 {
+
+  margin:
+    0;
+
+  font-family:
+    var(--serif);
+
+  font-weight:
+    500;
+
+  font-size:
+    clamp(56px, 8vw, 90px);
+
+  line-height:
+    .88;
+
+  color:
+    var(--wine);
+
+}
+
+
+.story-line {
+
+  width:
+    1px;
+
+  height:
+    75px;
+
+  margin:
+    35px 0;
+
+  background:
+    var(--gold);
+
+}
+
+
+.story-text {
+
+  max-width:
+    610px;
+
+  margin:
+    0;
+
+  font-family:
+    var(--serif);
+
+  font-size:
+    21px;
+
+  line-height:
+    1.65;
+
+  color:
+    var(--muted);
+
+}
+
+
+.signature {
+
+  margin-top:
+    35px;
+
+  font-family:
+    var(--script);
+
+  font-size:
+    58px;
+
+  color:
+    var(--wine);
+
+}
+
+
+/* =========================================================
+   EVENTS
+   ========================================================= */
+
+.events-section {
+
+  padding:
+    100px 6vw;
+
+  background:
+    var(--ivory-light);
+
+}
+
+
+.section-heading {
+
+  text-align:
+    center;
+
+  margin-bottom:
+    55px;
+
+}
+
+
+.events-grid {
+
+  max-width:
+    1000px;
+
+  margin:
+    auto;
+
+  display:
+    grid;
+
+  grid-template-columns:
+    1fr 1fr;
+
+  gap:
+    25px;
+
+}
+
+
+.event-card {
+
+  position:
+    relative;
+
+  padding:
+    45px;
+
+  border:
+    1px solid
+    rgba(168,137,93,.35);
+
+  background:
+    rgba(255,255,255,.35);
+
+  min-height:
+    360px;
+
+}
+
+
+.event-icon {
+
+  display:
+    grid;
+
+  place-items:
+    center;
+
+  width:
+    64px;
+  height:
+    64px;
+
+  margin-bottom:
+    25px;
+
+  border-radius:
+    50%;
+
+  background:
+    var(--wine);
+
+  color:
+    var(--gold-light);
+
+  font-family:
+    var(--serif);
+
+  font-size:
+    27px;
+
+}
+
+
+.event-label {
+
+  margin:
+    0 0 10px;
+
+  font-size:
+    8px;
+
+  letter-spacing:
+    2px;
+
+  color:
+    var(--gold-dark);
+
+}
+
+
+.event-card h3 {
+
+  margin:
+    0 0 18px;
+
+  font-family:
+    var(--serif);
+
+  font-size:
+    45px;
+
+  font-weight:
+    500;
+
+  color:
+    var(--wine);
+
+}
+
+
+.event-date {
+
+  margin:
+    0 0 4px;
+
+  font-family:
+    var(--serif);
+
+  font-size:
+    23px;
+
+}
+
+
+.event-time {
+
+  margin:
+    0 0 22px;
+
+  font-size:
+    8px;
+
+  letter-spacing:
+    2px;
+
+  color:
+    var(--gold-dark);
+
+  text-transform:
+    uppercase;
+
+}
+
+
+.event-venue {
+
+  margin:
+    0;
+
+  font-family:
+    var(--serif);
+
+  font-size:
+    17px;
+
+  line-height:
+    1.45;
+
+  color:
+    var(--muted);
+
+}
+
+
+.text-button {
+
+  position:
+    absolute;
+
+  bottom:
+    32px;
+
+  font-size:
+    8px;
+
+  letter-spacing:
+    2px;
+
+  text-transform:
+    uppercase;
+
+  color:
+    var(--wine);
+
+}
+
+
+/* =========================================================
+   VENUE
+   ========================================================= */
+
+.venue-section {
+
+  display:
+    grid;
+
+  grid-template-columns:
+    1fr 1fr;
+
+  min-height:
+    650px;
+
+}
+
+
+.venue-map {
+
+  min-height:
+    550px;
+
+  background:
+    #e7dfd2;
+
+}
+
+
+.map-pattern {
+
+  width:
+    100%;
+
+  height:
+    100%;
+
+  min-height:
+    550px;
+
+  position:
+    relative;
+
+  display:
+    grid;
+
+  place-items:
+    center;
+
+  background:
+
+    linear-gradient(
+      30deg,
+      transparent 49%,
+      rgba(88,27,47,.09) 50%,
+      transparent 51%
+    ),
+
+    linear-gradient(
+      120deg,
+      transparent 49%,
+      rgba(168,137,93,.13) 50%,
+      transparent 51%
+    );
+
+  background-size:
+    100px 100px,
+    130px 130px;
+
+}
+
+
+.map-pin {
+
+  display:
+    grid;
+
+  place-items:
+    center;
+
+  width:
+    65px;
+
+  height:
+    65px;
+
+  border-radius:
+    50% 50% 50% 0;
+
+  transform:
+    rotate(-45deg);
+
+  background:
+    var(--wine);
+
+  color:
+    white;
+
+  box-shadow:
+    0 15px 25px rgba(50,30,20,.2);
+
+}
+
+
+.map-pin::first-letter {
+
+  transform:
+    rotate(45deg);
+
+}
+
+
+.venue-content {
+
+  padding:
+    80px;
+
+  display:
+    flex;
+
+  flex-direction:
+    column;
+
+  justify-content:
+    center;
+
+  background:
+    var(--ivory);
+
+}
+
+
+.venue-content > p:not(.eyebrow) {
+
+  margin:
+    28px 0;
+
+  font-family:
+    var(--serif);
+
+  font-size:
+    20px;
+
+  line-height:
+    1.5;
+
+  color:
+    var(--muted);
+
+}
+
+
+/* =========================================================
+   GALLERY
+   ========================================================= */
+
+.gallery-section {
+
+  padding:
+    110px 6vw;
+
+}
+
+
+.gallery-grid {
+
+  max-width:
+    1100px;
+
+  margin:
+    auto;
+
+  display:
+    grid;
+
+  grid-template-columns:
+    repeat(4, 1fr);
+
+  gap:
+    10px;
+
+}
+
+
+.gallery-photo {
+
+  position:
+    relative;
+
+  overflow:
+    hidden;
+
+  aspect-ratio:
+    3 / 4;
+
+  background:
+    #d2c0aa;
+
+}
+
+
+.gallery-photo img {
+
+  width:
+    100%;
+
+  height:
+    100%;
+
+  object-fit:
+    cover;
+
+  transition:
+    transform .8s ease;
+
+}
+
+
+.gallery-photo:hover img {
+
+  transform:
+    scale(1.05);
+
+}
+
+
+/* =========================================================
+   RSVP
+   ========================================================= */
+
+.rsvp-section {
+
+  padding-top: 25px;
+
+  margin-bottom: 5svh;
+
+  min-height:
+    45svh;
+
+  padding: 25px;
+
+  display:
+    flex;
+
+  flex-direction:
+    column;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  text-align:
+    center;
+
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(255,255,255,.65),
+      transparent 50%
+    ),
+
+    var(--paper);
+
+}
+
+
+.rsvp-decoration {
+
+  margin-bottom:
+    18px;
+
+  font-size:
+    43px;
+
+  color:
+    var(--gold);
+
+}
+
+
+.rsvp-section h2 {
+
+  font-size:
+    clamp(65px, 10vw, 105px);
+
+}
+
+
+.rsvp-copy {
+
+  margin:
+    28px 0;
+
+  font-family:
+    var(--serif);
+
+  font-size:
+    21px;
+
+  line-height:
+    1.5;
+
+  color:
+    var(--muted);
+
+}
+
+
+.rsvp-deadline {
+
+  margin:
+    25px 0 0;
+
+  font-size:
+    8px;
+
+  letter-spacing:
+    2px;
+
+  text-transform:
+    uppercase;
+
+  color:
+    var(--muted);
+
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.footer {
+
+  padding:
+    70px 20px;
+
+  text-align:
+    center;
+
+  color:
+    white;
+
+  background:
+    var(--wine);
+
+}
+
+
+.footer-symbol {
+
+  color:
+    var(--gold-light);
+
+}
+
+
+.footer h2 {
+
+  margin:
+    10px 0;
+
+  font-family:
+    var(--script);
+
+  font-size:
+    70px;
+
+  font-weight:
+    400;
+
+}
+
+
+.footer h2 span {
+
+  font-family:
+    var(--serif);
+
+  font-size:
+    .4em;
+
+}
+
+
+.footer p {
+
+  margin:
+    0 0 25px;
+
+  font-family:
+    var(--serif);
+
+  color:
+    rgba(255,255,255,.65);
+
+}
+
+
+.footer small {
+
+  font-size:
+    8px;
+
+  letter-spacing:
+    4px;
+
+  color:
+    var(--gold-light);
+
+}
+
+
+/* =========================================================
+   REVEAL ANIMATION
+   ========================================================= */
+
+.reveal {
+
+  opacity:
+    0;
+
+  transform:
+    translateY(45px);
+
+  transition:
+    opacity 1s ease,
+    transform 1s cubic-bezier(.2,.7,.2,1);
+
+}
+
+
+.reveal.visible {
+
+  opacity:
+    1;
+
+  transform:
+    translateY(0);
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 767px) {
+
+  .bifold-stage {
+
+    width:
+      90vw;
+
+    height:
+      60svh;
+
+  }
+
+
+  .ganesha {
+
+    width:
+      58%;
+
+    max-width:
+      270px;
+
+  }
+
+
+  .mantra {
+
+    font-size:
+      42px;
+
+  }
+
+
+  .cover-couple {
+
+    font-size:
+      40px;
+
+  }
+
+
+  .site-header {
+
+    padding:
+      0 16px;
+
+  }
+
+
+  .site-header nav {
+
+    display:
+      none;
+
+  }
+
+
+  .hero-section {
+
+    grid-template-columns:
+      1fr;
+
+    min-height:
+      auto;
+
+    padding:
+      90px 25px;
+
+    text-align:
+      center;
+
+  }
+
+
+  .hero-copy {
+
+    display:
+      flex;
+
+    flex-direction:
+      column;
+
+    align-items:
+      center;
+
+  }
+
+
+  .hero-names {
+
+    font-size:
+      100px;
+
+  }
+
+
+  .hero-photo {
+
+    margin-top:
+      30px;
+
+  }
+
+
+  .events-grid {
+
+    grid-template-columns:
+      1fr;
+
+  }
+
+
+  .event-card {
+
+    padding:
+      35px;
+
+  }
+
+
+  .venue-section {
+
+    grid-template-columns:
+      1fr;
+
+  }
+
+
+  .venue-map,
+  .map-pattern {
+
+    min-height:
+      380px;
+
+  }
+
+
+  .venue-content {
+
+    padding:
+      70px 30px;
+
+    text-align:
+      center;
+
+    align-items:
+      center;
+
+  }
+
+
+  .gallery-grid {
+
+    grid-template-columns:
+      1fr 1fr;
+
+  }
+
+  #small-ganesh {
+    width:100px;
+    height:100px;
+    z-index: 6;
+    position: absolute;
+    top: 0%;
+  }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+
+    animation-duration:
+      .01ms !important;
+
+    animation-iteration-count:
+      1 !important;
+
+    transition-duration:
+      .01ms !important;
+
+    scroll-behavior:
+      auto !important;
+
+  }
+
+}
+
+#petals {
+    position: absolute;
+    top: -20px;
+    width: 100vw;
+}
+
+#ganesh {
+    position: absolute;
+    top: 20%;
+}
+
+#small-ganesh {
+    width:200px;
+    height:200px;
+    z-index: 4;
+    position: absolute;
+    top: 9%;
+}
