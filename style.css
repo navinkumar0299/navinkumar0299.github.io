@@ -2597,7 +2597,7 @@ button {
   
   .fold-left {
     /* Keep the panel width at 50% so it behaves exactly like desktop */
-    width: 100% !important; 
+    /* width: 100% !important;  */
   }
 
   .cover-screen.is-opening .fold-left {
