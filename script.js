@@ -54,6 +54,20 @@ document.addEventListener(
       false;
 
 
+    setTimeout(() => {
+        const loader = document.getElementById('wedding-loader');
+        const content = document.getElementById('content');
+        
+        loader.style.opacity = '0'; // Fade out effect
+        
+        setTimeout(() => {
+        loader.style.display = 'none'; // Remove from view
+        content.style.display = 'block'; // Reveal main page
+        }, 500); // Match the CSS transition duration
+        
+    }, 2500);
+
+
     /* =====================================================
        CREATE PETALS
        ===================================================== */
