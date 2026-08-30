@@ -2721,3 +2721,93 @@ button {
     position: absolute;
     top: 9%;
 }
+
+#wedding-loader {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at center, #3b0920, #270616); /* Coordinates with maroon-1 & maroon-2 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100000; /* Stays securely above coverScreen (9999) */
+  opacity: 1;
+  transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.loader-wrap {
+  text-align: center;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Ornate Geometric Mandala Construct */
+.mandala-spinner {
+  width: 90px;
+  height: 90px;
+  border: 2px dashed #d8b36c; /* Gold accent */
+  border-radius: 50%;
+  position: relative;
+  animation: smoothRotate 12s linear infinite;
+}
+
+.mandala-spinner::before,
+.mandala-spinner::after {
+  content: "";
+  position: absolute;
+  inset: 8px;
+  border: 1px double #f1d89f; /* Gold light accent */
+  border-radius: 50%;
+  animation: smoothRotateReverse 6s linear infinite;
+}
+
+.mandala-spinner::after {
+  inset: 20px;
+  border: 1px dashed #9c7137; /* Gold dark accent */
+  animation: smoothRotate 3s linear infinite;
+}
+
+/* Typography styles matching the invitation theme */
+.loader-initials {
+  margin: 25px 0 5px;
+  font-family: "Great Vibes", cursive;
+  font-size: 38px;
+  color: #f1d89f;
+  letter-spacing: 2px;
+  animation: softPulse 2s ease-in-out infinite;
+}
+
+.loader-text {
+  margin: 0;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 11px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: #d8b36c;
+  opacity: 0.8;
+}
+
+/* KEYFRAMES FOR ANIMATIONS */
+@keyframes smoothRotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes smoothRotateReverse {
+  0% { transform: rotate(360deg); }
+  100% { transform: rotate(0deg); }
+}
+
+@keyframes softPulse {
+  0%, 100% { transform: scale(1); opacity: 0.9; }
+  50% { transform: scale(1.05); opacity: 1; }
+}
+
+/* Main website content (hidden initially) */
+#content {
+    display: none;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
