@@ -2811,3 +2811,35 @@ button {
     font-family: Arial, sans-serif;
     text-align: center;
 }
+
+@keyframes mobileSlideAndFade {
+  0% {
+    transform: rotateY(0);
+    opacity: 1;
+  }
+
+  100% {
+    /* Slides the cover 120% to the left to fully clear the screen */
+    transform: rotateY(-180deg);
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@media (max-width: 767px) {
+  
+  /* ... your existing mobile styles ... */
+
+  /* ─── ADD THIS OVERRIDE ─── */
+  .cover-screen.is-opening .fold-left {
+    /* Uses the new 2D slide instead of the 3D flip */
+    animation: mobileSlideAndFade 2.2s cubic-bezier(.65,0,.15,1) forwards;
+  }
+  
+  /* Strip the 3D perspective from the stage on mobile to save GPU memory */
+  .bifold-stage {
+    perspective: none;
+    transform-style: flat;
+  }
+
+}
