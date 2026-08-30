@@ -2806,7 +2806,7 @@ button {
 
 /* Main website content (hidden initially) */
 #content {
-    display: none;
+    display: block;
     padding: 20px;
     font-family: Arial, sans-serif;
     text-align: center;
