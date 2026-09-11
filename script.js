@@ -515,7 +515,7 @@ document.addEventListener(
 
       }
 
-      const targetDate = new Date("November 25, 2026 00:00:00").getTime();
+      const targetDate = new Date("December 06, 2026 00:00:00").getTime();
       const current = new Date().getTime();
       const diff = targetDate - current;
 
@@ -619,7 +619,7 @@ document.addEventListener(
 
           "BEGIN:VEVENT",
 
-          `UID:navin-priya-${Date.now()}@wedding`,
+          `UID:aashish-archana-${Date.now()}@wedding`,
 
           `DTSTAMP:${formatICSDate(
             new Date()
@@ -629,11 +629,11 @@ document.addEventListener(
 
           `DTEND:${end}`,
 
-          "SUMMARY:Navin & Priya — Wedding",
+          "SUMMARY:Aashish & Archana — Wedding",
 
-          "LOCATION:The Grand Palace, Chennai, Tamil Nadu",
+          "LOCATION:The Grand Palace, Delhi, Tamil Nadu",
 
-          "DESCRIPTION:Wedding celebration of Navin & Priya.",
+          "DESCRIPTION:Wedding celebration of Aashish & Archana.",
 
           "END:VEVENT",
 
@@ -669,7 +669,7 @@ document.addEventListener(
 
 
         downloadLink.download =
-          "Navin-Priya-Wedding.ics";
+          "Aashish-Archana-Wedding.ics";
 
 
         document.body.appendChild(
