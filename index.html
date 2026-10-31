@@ -66,35 +66,11 @@ body::selection {
   color: var(--maroon-950);
 }
 
-/* The uploaded geometric motif becomes a permanent page frame.
-   It stays narrow so the invitation remains comfortable to read on phones. */
+/* The ornamental motif is reserved for the opening page only. */
 body::before,
 body::after {
-  content: "";
-  position: fixed;
-  z-index: 75;
-  top: 0;
-  bottom: 0;
-  width: var(--page-rail);
-  pointer-events: none;
-  background-color: var(--maroon-900);
-  background-image:
-    linear-gradient(90deg, rgba(255, 248, 226, 0.12), transparent 14%, transparent 86%, rgba(54, 12, 21, 0.24)),
-    var(--rail-image);
-  background-repeat: no-repeat, repeat-y;
-  background-position: center, top center;
-  background-size: 100% 100%, 100% auto;
-}
-
-body::before {
-  left: 0;
-  box-shadow: inset -1px 0 rgba(240, 217, 150, 0.5), 12px 0 32px rgba(55, 16, 24, 0.16);
-}
-
-body::after {
-  right: 0;
-  transform: scaleX(-1);
-  box-shadow: inset -1px 0 rgba(240, 217, 150, 0.5), 12px 0 32px rgba(55, 16, 24, 0.16);
+  display: none;
+  content: none;
 }
 
 main,
@@ -209,23 +185,40 @@ svg {
 .hero::after {
   content: "";
   position: absolute;
-  z-index: -2;
-  width: 360px;
-  height: 360px;
-  border: 1px solid rgba(229, 194, 111, 0.13);
-  border-radius: 50%;
+  z-index: 2;
+  top: 0;
+  bottom: 0;
+  width: var(--page-rail);
+  height: auto;
+  border: 0;
+  border-radius: 0;
+  pointer-events: none;
+  background-color: var(--maroon-900);
+  background-image:
+    linear-gradient(90deg, rgba(255, 248, 226, 0.12), transparent 14%, transparent 86%, rgba(54, 12, 21, 0.24)),
+    var(--rail-image);
+  background-repeat: no-repeat, repeat-y;
+  background-position: center, top center;
+  background-size: 100% 100%, 100% auto;
 }
 
 .hero::before {
-  top: -215px;
-  left: -150px;
-  box-shadow: 0 0 0 28px rgba(229, 194, 111, 0.035), 0 0 0 62px rgba(229, 194, 111, 0.025);
+  left: 0;
+  box-shadow: inset -1px 0 rgba(240, 217, 150, 0.5), 12px 0 32px rgba(55, 16, 24, 0.16);
 }
 
 .hero::after {
-  right: -190px;
-  bottom: -205px;
-  box-shadow: 0 0 0 35px rgba(229, 194, 111, 0.035), 0 0 0 78px rgba(229, 194, 111, 0.025);
+  right: 0;
+  transform: scaleX(-1);
+  box-shadow: inset -1px 0 rgba(240, 217, 150, 0.5), 12px 0 32px rgba(55, 16, 24, 0.16);
+}
+
+.hero > .hero-frame {
+  z-index: 3;
+}
+
+.hero {
+  border-bottom: 1px solid rgba(229, 194, 111, 0.42);
 }
 
 .hero-mandala {
@@ -596,13 +589,13 @@ svg {
 }
 
 .section-shell {
-  width: min(1160px, calc(100% - (var(--page-rail) * 2) - 40px));
+  width: min(1160px, calc(100% - 40px));
   margin: 0 auto;
   padding: clamp(88px, 11vw, 150px) 0;
 }
 
 .narrow-shell {
-  width: min(790px, calc(100% - (var(--page-rail) * 2) - 40px));
+  width: min(790px, calc(100% - 40px));
   text-align: center;
 }
 
@@ -1147,7 +1140,7 @@ svg {
 }
 
 footer {
-  padding: 22px calc(var(--page-rail) + 20px);
+  padding: 22px 20px;
   color: rgba(255, 253, 248, 0.7);
   text-align: center;
   background: var(--maroon-950);
@@ -1167,9 +1160,9 @@ footer span {
 .toast {
   position: fixed;
   z-index: 100;
-  right: calc(var(--page-rail) + 20px);
+  right: 20px;
   bottom: max(20px, env(safe-area-inset-bottom));
-  max-width: min(360px, calc(100% - (var(--page-rail) * 2) - 40px));
+  max-width: min(360px, calc(100% - 40px));
   padding: 13px 18px;
   border: 1px solid rgba(229, 194, 111, 0.3);
   border-radius: 14px;
@@ -1233,8 +1226,8 @@ footer span {
     --page-rail: 18px;
   }
 
-  body::before,
-  body::after {
+  .hero::before,
+  .hero::after {
     background-size: 100% 100%, 26px auto;
   }
 
@@ -1372,8 +1365,8 @@ footer span {
 
 @media (max-width: 780px) {
   .toast {
-    right: calc(var(--page-rail) + 10px);
-    max-width: calc(100% - (var(--page-rail) * 2) - 20px);
+    right: 10px;
+    max-width: calc(100% - 20px);
   }
 }
 
@@ -1429,8 +1422,8 @@ footer span {
     --page-rail: 15px;
   }
 
-  body::before,
-  body::after {
+  .hero::before,
+  .hero::after {
     background-size: 100% 100%, 23px auto;
   }
 
@@ -1478,8 +1471,6 @@ footer span {
 }
 
 /* User-requested refinements: cleaner opening and unnumbered event cards. */
-.hero::before,
-.hero::after,
 .hero-mandala,
 .hero-frame::before,
 .hero-frame::after,
@@ -2274,7 +2265,7 @@ footer span {
   }
 }
 
-</style>
+  </style>
 </head>
 <body>
   <a class="skip-link" href="#events">Skip to celebrations</a>
@@ -3041,6 +3032,6 @@ function init() {
 
 document.addEventListener("DOMContentLoaded", init);
 
-</script>
+  </script>
 </body>
 </html>
